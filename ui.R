@@ -4,6 +4,11 @@ ui <- bslib::page(
   lang = "en",
   shinyjs::useShinyjs(),
   tags$head(
+    tags$link(
+      rel = "icon",
+      type = "image/x-icon",
+      href = "card-checklist.svg"
+    ),
     tags$script(src = "script.js")
   ),
   tags$div(
