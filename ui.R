@@ -3,11 +3,17 @@ ui <- bslib::page(
   theme = bslib::bs_theme(version = 5),
   lang = "en",
   shinyjs::useShinyjs(),
+  tags$head(
+    tags$script(src = "script.js")
+  ),
   tags$div(
     class = "bg-light min-vh-100",
     tags$div(
       class = "container",
-      tags$h1(sprintf("Task List %s", format(Sys.Date(), format = "%Y"))),
+      tags$h1(
+        id = "today",
+        sprintf("Task List %s", format(Sys.Date(), format = "%Y"))
+      ),
       tags$div(
         class = "d-flex",
         textInput(
