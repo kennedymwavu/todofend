@@ -1,6 +1,9 @@
 ui <- bslib::page(
   title = "Todo",
-  theme = bslib::bs_theme(version = 5),
+  theme = bslib::bs_theme(
+    version = 5,
+    base_font = bslib::font_google(family = "Quicksand")
+  ),
   lang = "en",
   shinyjs::useShinyjs(),
   tags$head(
