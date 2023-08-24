@@ -18,13 +18,13 @@ ui <- bslib::page(
           tagAppendAttributes(class = text_input_classes),
         actionButton(
           inputId = "add_task",
-          label = "Add task",
+          label = NULL,
           icon = icon(
             name = NULL,
-            class = "glyphicon glyphicon-plus me-1",
+            class = "glyphicon glyphicon-plus",
             lib = "glyphicon"
           ),
-          class = "btn-primary"
+          class = "btn-primary btn-sm"
         )
       ),
       tags$div(
