@@ -12,10 +12,10 @@ ui <- bslib::page(
       type = "image/x-icon",
       href = "card-checklist.svg"
     ),
+    tags$link(rel = "stylesheet", href = "styles.css"),
     tags$script(src = "script.js")
   ),
-  tags$div(
-    class = "bg-light min-vh-100",
+  tags$body(
     tags$div(
       class = "container",
       tags$h1(
