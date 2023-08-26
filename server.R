@@ -30,7 +30,7 @@ server <- \(input, output, session) {
         label = NULL,
         value = new_task,
       ) |>
-        tagAppendAttributes(class = text_input_classes),
+        tagAppendAttributes(class = "mb-0 me-2 flex-grow-1"),
       actionButton(
         inputId = save_edits_id,
         label = NULL,
