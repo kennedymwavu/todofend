@@ -17,9 +17,11 @@ ui <- bslib::page(
   ),
   tags$body(
     tags$div(
-      class = "container",
+      class = "container py-4",
       tags$h1(
         id = "today",
+        class = "fw-semibold",
+        style = "color: #012970; font-size: 24px;",
         sprintf("Task List %s", format(Sys.Date(), format = "%Y"))
       ),
       tags$div(
@@ -42,13 +44,16 @@ ui <- bslib::page(
         )
       ),
       tags$div(
-        class = "mt-3",
-        tags$h1("Tasks"),
+        class = "card mt-3 p-4 border-0",
         tags$div(
-          id = "task_container",
+          class = "card-body",
+          tags$h5(class = "card-title",  "Tasks"),
           tags$div(
-            id = "no_tasks_container",
-            tags$p("No tasks lined up")
+            id = "task_container",
+            tags$div(
+              id = "no_tasks_container",
+              tags$p("Woohoo! No tasks lined up")
+            )
           )
         )
       )
