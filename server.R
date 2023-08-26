@@ -1,4 +1,8 @@
 server <- \(input, output, session) {
+  in_prod <- Sys.getenv("IN_PROD") |> as.logical() |> isTRUE()
+  if (!in_prod) {
+    onSessionEnded(fun = stopApp)
+  }
   last_task_id <- reactiveVal(0)
   num_of_tasks <- reactiveVal(0)
   # hide/show the no tasks container:
