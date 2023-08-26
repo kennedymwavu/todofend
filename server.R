@@ -13,6 +13,7 @@ server <- \(input, output, session) {
     )
   })
   observeEvent(input$add_task, {
+    req(input$new_task)
     new_task_id <- last_task_id() + 1
     num_of_tasks(num_of_tasks() + 1)
     last_task_id(new_task_id)
