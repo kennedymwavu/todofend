@@ -13,6 +13,10 @@ ui <- bslib::page(
       href = "card-checklist.svg"
     ),
     tags$link(rel = "stylesheet", href = "styles.css"),
+    tags$link(
+      rel = "stylesheet",
+      href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    ),
     tags$script(src = "script.js")
   ),
   tags$body(
@@ -34,11 +38,10 @@ ui <- bslib::page(
           tagAppendAttributes(class = text_input_classes),
         actionButton(
           inputId = "add_task",
-          label = NULL,
+          label = "Add task",
           icon = icon(
             name = NULL,
-            class = "glyphicon glyphicon-plus",
-            lib = "glyphicon"
+            class = "bi bi-plus-lg"
           ),
           class = "btn-primary btn-sm"
         )
@@ -52,7 +55,7 @@ ui <- bslib::page(
             id = "task_container",
             tags$div(
               id = "no_tasks_container",
-              tags$p("Woohoo! No tasks lined up")
+              tags$p("Woohoo!🎉 Nothing lined up. Try adding new tasks.")
             )
           )
         )
