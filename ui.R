@@ -28,7 +28,7 @@ ui <- bslib::page(
         style = "color: #012970; font-size: 24px;",
         sprintf("Task List %s", format(Sys.Date(), format = "%Y"))
       ),
-      tags$div(
+      tags$form(
         class = "d-flex",
         textInput(
           inputId = "new_task",
@@ -44,7 +44,8 @@ ui <- bslib::page(
             name = NULL,
             class = "bi bi-plus-lg"
           ),
-          class = "btn-primary btn-sm"
+          class = "btn-primary btn-sm",
+          type = "submit"
         )
       ),
       tags$div(
