@@ -22,30 +22,35 @@ ui <- bslib::page(
   tags$body(
     tags$div(
       class = "container py-4",
-      tags$h1(
-        id = "today",
-        class = "fw-semibold",
-        style = "color: #012970; font-size: 24px;",
-        sprintf("Task List %s", format(Sys.Date(), format = "%Y"))
-      ),
-      tags$form(
-        class = "d-flex",
-        textInput(
-          inputId = "new_task",
-          label = NULL,
-          placeholder = "What do you have planned?",
-          width = "100%"
-        ) |>
-          tagAppendAttributes(class = "mb-0 me-1"),
-        actionButton(
-          inputId = "add_task",
-          label = NULL,
-          icon = icon(
-            name = NULL,
-            class = "bi bi-plus-lg"
+      tags$div(
+        class = "card p-4 border-0",
+        tags$div(
+          class = "card-body",
+          tags$h1(
+            id = "today",
+            class = "card-title fw-semibold fs-4 mb-3",
+            sprintf("Task List %s", format(Sys.Date(), format = "%Y"))
           ),
-          class = "btn-primary btn-sm",
-          type = "submit"
+          tags$form(
+            class = "d-flex",
+            textInput(
+              inputId = "new_task",
+              label = NULL,
+              placeholder = "What do you have planned?",
+              width = "100%"
+            ) |>
+              tagAppendAttributes(class = "mb-0 me-1"),
+            actionButton(
+              inputId = "add_task",
+              label = NULL,
+              icon = icon(
+                name = NULL,
+                class = "bi bi-plus-lg"
+              ),
+              class = "btn-primary btn-sm border-0 fs-5 rounded-circle",
+              type = "submit"
+            )
+          )
         )
       ),
       tags$div(
@@ -53,7 +58,7 @@ ui <- bslib::page(
         tags$div(
           class = "card-body",
           tags$h5(
-            class = "card-title mb-3",
+            class = "card-title mb-3 fs-5",
             tags$i(class = "bi bi-card-list"),
             "Tasks In Progress"
           ),

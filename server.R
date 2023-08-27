@@ -38,7 +38,7 @@ server <- \(input, output, session) {
           name = NULL,
           class = "bi bi-check-lg"
         ),
-        class = "btn-success btn-sm me-1"
+        class = "btn-success btn-sm me-1 fs-5 border-0 rounded-circle",
       ) |>
         shinyjs::hidden() |>
         bslib::tooltip("Save edits"),
@@ -49,7 +49,7 @@ server <- \(input, output, session) {
           name = NULL,
           class = "bi bi-trash"
         ),
-        class = "btn-danger btn-sm"
+        class = "btn-danger btn-sm fs-5 border-0 rounded-circle"
       ) |>
         bslib::tooltip("Delete task")
     ) |>
