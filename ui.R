@@ -23,7 +23,7 @@ ui <- bslib::page(
     tags$div(
       class = "container py-4",
       tags$div(
-        class = "card p-4 border-0",
+        class = "card p-1 p-md-4 border-0",
         tags$div(
           class = "card-body",
           tags$h1(
@@ -54,7 +54,7 @@ ui <- bslib::page(
         )
       ),
       tags$div(
-        class = "card mt-3 p-4 border-0",
+        class = "card mt-3 p-1 p-md-4 border-0",
         tags$div(
           class = "card-body",
           tags$h5(
