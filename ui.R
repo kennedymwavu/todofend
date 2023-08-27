@@ -33,12 +33,13 @@ ui <- bslib::page(
         textInput(
           inputId = "new_task",
           label = NULL,
-          placeholder = "What do you have planned?"
+          placeholder = "What do you have planned?",
+          width = "100%"
         ) |>
-          tagAppendAttributes(class = text_input_classes),
+          tagAppendAttributes(class = "mb-0 me-1"),
         actionButton(
           inputId = "add_task",
-          label = "Add task",
+          label = NULL,
           icon = icon(
             name = NULL,
             class = "bi bi-plus-lg"
@@ -50,7 +51,11 @@ ui <- bslib::page(
         class = "card mt-3 p-4 border-0",
         tags$div(
           class = "card-body",
-          tags$h5(class = "card-title",  "Tasks"),
+          tags$h5(
+            class = "card-title mb-3",
+            tags$i(class = "bi bi-card-list"),
+            "Tasks In Progress"
+          ),
           tags$div(
             id = "task_container",
             tags$div(
