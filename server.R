@@ -36,8 +36,7 @@ server <- \(input, output, session) {
         label = NULL,
         icon = icon(
           name = NULL,
-          class = "glyphicon glyphicon-ok",
-          lib = "glyphicon"
+          class = "bi bi-check-lg"
         ),
         class = "btn-success btn-sm me-1"
       ) |>
@@ -48,8 +47,7 @@ server <- \(input, output, session) {
         label = NULL,
         icon = icon(
           name = NULL,
-          class = "glyphicon glyphicon-trash",
-          lib = "glyphicon"
+          class = "bi bi-trash"
         ),
         class = "btn-danger btn-sm"
       ) |>
