@@ -1,8 +1,4 @@
 server <- \(input, output, session) {
-  in_prod <- Sys.getenv("IN_PROD") |> as.logical() |> isTRUE()
-  if (!in_prod) {
-    onSessionEnded(fun = stopApp)
-  }
   last_task_id <- reactiveVal(0)
   num_of_tasks <- reactiveVal(0)
   # hide/show the no tasks container:
@@ -12,6 +8,17 @@ server <- \(input, output, session) {
       condition = num_of_tasks() < 1
     )
   })
+  output$num_of_tasks <- renderText({
+    if (num_of_tasks() < 1) {
+      return()
+    }
+    sprintf(
+      "%s task%s remaining",
+      num_of_tasks(),
+      if (num_of_tasks() == 1) "" else "s"
+    )
+  }) |>
+    bindEvent(num_of_tasks())
   observeEvent(input$add_task, {
     req(input$new_task)
     new_task_id <- last_task_id() + 1
