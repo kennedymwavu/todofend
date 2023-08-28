@@ -67,7 +67,9 @@ ui <- bslib::page(
             tags$div(
               id = "no_tasks_container",
               tags$p("Woohoo!🎉 Nothing lined up. Try adding new tasks.")
-            )
+            ),
+            textOutput(outputId = "num_of_tasks") |>
+              tagAppendAttributes(class = "text-muted")
           )
         )
       )
