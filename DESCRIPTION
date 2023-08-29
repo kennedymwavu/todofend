@@ -1,0 +1,17 @@
+Package: todofend
+Title: Manage Todo Tasks
+Version: 0.0.0.9000
+Authors@R: 
+    person("Kennedy", "Mwavu", , "mwavukennedy@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0009-0006-3157-7234"))
+Description: Enables you to create and manage daily todo items.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    httr2 (>= 0.2.3)
+Suggests: 
+    bslib (>= 0.5.1),
+    shiny (>= 1.7.5),
+    shinyjs (>= 2.1.0)
