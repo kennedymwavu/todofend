@@ -14,19 +14,19 @@ server <- \(input, output, session) {
   observeEvent(todo_list(),
     {
       lapply(todo_list(), \(item) {
-        new_task_id <- item$id
-        new_task <- item$item
-        container_id <- paste0("task_", new_task_id, "_container")
-        text_input_id <- paste0("task_", new_task_id)
-        save_edits_id <- paste0("save_task_", new_task_id)
-        delete_task_id <- paste0("delete_task_", new_task_id)
+        task <- item$item
+        task_id <- item$id
+        container_id <- paste0("task_", task_id, "_container")
+        text_input_id <- paste0("task_", task_id)
+        save_edits_id <- paste0("save_task_", task_id)
+        delete_task_id <- paste0("delete_task_", task_id)
         ui <- tags$div(
           id = container_id,
           class = "d-flex mb-3",
           textInput(
             inputId = text_input_id,
             label = NULL,
-            value = new_task,
+            value = task,
           ) |>
             tagAppendAttributes(class = "mb-0 me-2 flex-grow-1"),
           actionButton(
@@ -65,7 +65,7 @@ server <- \(input, output, session) {
             delete_task(
               todo_name = todo_name,
               base_url = base_url,
-              task_id = new_task_id
+              task_id = task_id
             )
             todo_list(
               get_todo_list(
@@ -85,14 +85,14 @@ server <- \(input, output, session) {
         observeEvent(input[[text_input_id]], {
           shinyjs::toggle(
             id = save_edits_id,
-            condition = input[[text_input_id]] != new_task,
+            condition = input[[text_input_id]] != task,
             anim = TRUE,
             animType = "fade"
           )
         })
         # save edits:
         observeEvent(input[[save_edits_id]], {
-          update_task(todo_name, base_url, new_task_id, input[[text_input_id]])
+          update_task(todo_name, base_url, task_id, input[[text_input_id]])
           todo_list(
             get_todo_list(
               todo_name = todo_name,
@@ -101,7 +101,6 @@ server <- \(input, output, session) {
           )
           shinyjs::hide(id = save_edits_id, anim = TRUE, animType = "fade")
         })
-        shinyjs::reset(id = "new_task")
       })
     },
     once = TRUE
