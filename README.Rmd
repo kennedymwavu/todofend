@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# todofend
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+Frontend for a todo list web app. Build using [shiny](https://shiny.posit.co/).
+
+See the backend [here](https://github.com/kennedymwavu/todobend)
+
+## Installation
+
+You can install the development version of todofend like so:
+
+```r
+remotes::install_github("kennedymwavu/todofend")
+```
+
+## Usage
+
+```r
+todofend::run_app()
+```
