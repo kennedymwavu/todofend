@@ -6,10 +6,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-Frontend for a todo list web app. Build using
+Frontend for a todo list web app. Built using
 [shiny](https://shiny.posit.co/).
 
-See the backend [here](https://github.com/kennedymwavu/todobend)
+See the backend [here](https://github.com/kennedymwavu/todobend).
 
 ## Installation
 
