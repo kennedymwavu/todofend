@@ -1,5 +1,5 @@
 task_loading_skeleton <- tags$div(
-  id = "task_container_spinner",
+  id = "task_loading_skeleton",
   class = "loading-skeleton",
   lapply(1:4, \(i) {
     tags$div(

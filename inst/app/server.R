@@ -111,7 +111,7 @@ server <- \(input, output, session) {
   # hide/show the no tasks container:
   observeEvent(num_of_tasks(), {
     removeUI(
-      selector = "#task_container_spinner",
+      selector = "#task_loading_skeleton",
       immediate = TRUE
     )
     shinyjs::toggle(
