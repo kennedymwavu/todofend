@@ -1,6 +1,6 @@
 todo_name <- Sys.getenv("TODO_NAME")
 base_url <- Sys.getenv("BASE_URL")
-task_limit <- Sys.getenv("TASK_LIMIT")
+task_limit <- as.numeric(Sys.getenv("TASK_LIMIT"))
 # if you have the backend running locally you can use this for testing:
 # todo_name <- "todo1"
 # base_url <- "http://127.0.0.1:8000/todo"
