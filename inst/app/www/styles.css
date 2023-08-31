@@ -10,3 +10,27 @@ body {
 .card-title {
   color: #012970;
 }
+
+/* loading skeleton */
+.loading-skeleton .form-control, .loading-skeleton button {
+  color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #eee;
+  border-color: #eee;
+}
+.loading-skeleton .form-control::placeholder {
+  color: transparent;
+}
+@keyframes loading-skeleton {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.loading-skeleton {
+  pointer-events: none;
+  animation: loading-skeleton 0.7s infinite alternate;
+}
