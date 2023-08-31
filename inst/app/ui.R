@@ -30,6 +30,7 @@ ui <- bslib::page(
   ),
   lang = "en",
   shinyjs::useShinyjs(),
+  shinytoastr::useToastr(),
   tags$head(
     tags$link(
       rel = "icon",

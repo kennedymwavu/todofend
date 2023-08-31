@@ -1,5 +1,6 @@
 todo_name <- Sys.getenv("TODO_NAME")
 base_url <- Sys.getenv("BASE_URL")
+task_limit <- Sys.getenv("TASK_LIMIT")
 # if you have the backend running locally you can use this for testing:
 # todo_name <- "todo1"
 # base_url <- "http://127.0.0.1:8000/todo"
@@ -131,6 +132,15 @@ server <- \(input, output, session) {
   }) |>
     bindEvent(num_of_tasks())
   observeEvent(input$add_task, {
+    if (num_of_tasks() > task_limit) {
+      shinytoastr::toastr_error(
+        message = "Maximum task limit exceeded.",
+        title = "Error!",
+        progressBar = TRUE,
+        position = "bottom-center"
+      )
+      return()
+    }
     new_task <- input$new_task
     req(new_task)
     add_task(todo_name = todo_name, base_url = base_url, task = new_task)
