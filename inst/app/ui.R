@@ -1,3 +1,27 @@
+task_loading_skeleton <- tags$div(
+  id = "task_container_spinner",
+  class = "loading-skeleton",
+  lapply(1:4, \(i) {
+    tags$div(
+      class = "d-flex mb-3",
+      textInput(
+        inputId = paste0("task_placeholder", i),
+        label = NULL,
+        placeholder = "Task placeholder"
+      ) |>
+        tagAppendAttributes(class = "mb-0 me-2 flex-grow-1"),
+      actionButton(
+        inputId = paste0("task_btn_placeholder", i),
+        label = NULL,
+        icon = icon(
+          name = NULL,
+          class = "bi bi-check-lg"
+        ),
+        class = "btn-sm fs-5 border-0 rounded-circle",
+      )
+    )
+  })
+)
 ui <- bslib::page(
   title = "Todo",
   theme = bslib::bs_theme(
@@ -64,10 +88,12 @@ ui <- bslib::page(
           ),
           tags$div(
             id = "task_container",
+            task_loading_skeleton,
             tags$div(
               id = "no_tasks_container",
               tags$p("Woohoo!🎉 Nothing lined up. Try adding new tasks.")
-            ),
+            ) |>
+              shinyjs::hidden(),
             textOutput(outputId = "num_of_tasks") |>
               tagAppendAttributes(class = "text-muted")
           )
