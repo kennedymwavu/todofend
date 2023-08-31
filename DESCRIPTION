@@ -14,4 +14,5 @@ Imports:
 Suggests: 
     bslib (>= 0.5.1),
     shiny (>= 1.7.5),
-    shinyjs (>= 2.1.0)
+    shinyjs (>= 2.1.0),
+    shinytoastr (>= 2.1.1)
