@@ -4,7 +4,7 @@ base_url <- Sys.getenv("BASE_URL")
 # todo_name <- "todo1"
 # base_url <- "http://127.0.0.1:8000/todo"
 server <- \(input, output, session) {
-  num_of_tasks <- reactiveVal(0)
+  num_of_tasks <- reactiveVal()
   todo_list <- reactiveVal(
     get_todo_list(
       todo_name = todo_name,
@@ -65,6 +65,11 @@ server <- \(input, output, session) {
         shinyjs::show(id = container_id, anim = TRUE)
         observeEvent(input[[delete_task_id]],
           {
+            removeUI(
+              selector = paste0("#", container_id),
+              immediate = TRUE,
+              session = session
+            )
             delete_task(
               todo_name = todo_name,
               base_url = base_url,
@@ -75,11 +80,6 @@ server <- \(input, output, session) {
                 todo_name = todo_name,
                 base_url = base_url
               )
-            )
-            removeUI(
-              selector = paste0("#", container_id),
-              immediate = TRUE,
-              session = session
             )
           },
           once = TRUE
@@ -110,6 +110,10 @@ server <- \(input, output, session) {
   )
   # hide/show the no tasks container:
   observeEvent(num_of_tasks(), {
+    removeUI(
+      selector = "#task_container_spinner",
+      immediate = TRUE
+    )
     shinyjs::toggle(
       id = "no_tasks_container",
       condition = num_of_tasks() < 1
@@ -181,9 +185,14 @@ server <- \(input, output, session) {
       session = session
     )
     shinyjs::show(id = container_id, anim = TRUE)
-    # once a task is deleted, reduce number of tasks:
+    # delete task:
     observeEvent(input[[delete_task_id]],
       {
+        removeUI(
+          selector = paste0("#", container_id),
+          immediate = TRUE,
+          session = session
+        )
         delete_task(
           todo_name = todo_name,
           base_url = base_url,
@@ -194,11 +203,6 @@ server <- \(input, output, session) {
             todo_name = todo_name,
             base_url = base_url
           )
-        )
-        removeUI(
-          selector = paste0("#", container_id),
-          immediate = TRUE,
-          session = session
         )
       },
       once = TRUE
