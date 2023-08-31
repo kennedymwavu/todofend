@@ -71,10 +71,19 @@ server <- \(input, output, session) {
               immediate = TRUE,
               session = session
             )
-            delete_task(
-              todo_name = todo_name,
-              base_url = base_url,
-              task_id = task_id
+            tryCatch(
+              expr = delete_task(
+                todo_name = todo_name,
+                base_url = base_url,
+                task_id = task_id
+              ),
+              error = \(e) {
+                shinytoastr::toastr_error(
+                  message = conditionMessage(e),
+                  title = "Error!",
+                  position = "bottom-center"
+                )
+              }
             )
             todo_list(
               get_todo_list(
@@ -102,7 +111,18 @@ server <- \(input, output, session) {
         })
         # save edits:
         observeEvent(input[[save_edits_id]], {
-          update_task(todo_name, base_url, task_id, input[[text_input_id]])
+          tryCatch(
+            expr = {
+              update_task(todo_name, base_url, task_id, input[[text_input_id]])
+            },
+            error = \(e) {
+              shinytoastr::toastr_error(
+                message = conditionMessage(e),
+                title = "Error!",
+                position = "bottom-center"
+              )
+            }
+          )
           todo_list(
             get_todo_list(
               todo_name = todo_name,
@@ -155,7 +175,18 @@ server <- \(input, output, session) {
     }
     new_task <- input$new_task
     req(new_task)
-    add_task(todo_name = todo_name, base_url = base_url, task = new_task)
+    tryCatch(
+      expr = {
+        add_task(todo_name = todo_name, base_url = base_url, task = new_task)
+      },
+      error = \(e) {
+        shinytoastr::toastr_error(
+          message = conditionMessage(e),
+          title = "Error!",
+          position = "bottom-center"
+        )
+      }
+    )
     todo_list(
       get_todo_list(
         todo_name = todo_name,
@@ -215,10 +246,19 @@ server <- \(input, output, session) {
           immediate = TRUE,
           session = session
         )
-        delete_task(
-          todo_name = todo_name,
-          base_url = base_url,
-          task_id = new_task_id
+        tryCatch(
+          expr = delete_task(
+            todo_name = todo_name,
+            base_url = base_url,
+            task_id = new_task_id
+          ),
+          error = \(e) {
+            shinytoastr::toastr_error(
+              message = conditionMessage(e),
+              title = "Error!",
+              position = "bottom-center"
+            )
+          }
         )
         todo_list(
           get_todo_list(
@@ -246,7 +286,18 @@ server <- \(input, output, session) {
     })
     # save edits:
     observeEvent(input[[save_edits_id]], {
-      update_task(todo_name, base_url, new_task_id, input[[text_input_id]])
+      tryCatch(
+        expr = {
+          update_task(todo_name, base_url, new_task_id, input[[text_input_id]])
+        },
+        error = \(e) {
+          shinytoastr::toastr_error(
+            message = conditionMessage(e),
+            title = "Error!",
+            position = "bottom-center"
+          )
+        }
+      )
       todo_list(
         get_todo_list(
           todo_name = todo_name,
