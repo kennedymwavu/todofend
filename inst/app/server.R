@@ -82,6 +82,12 @@ server <- \(input, output, session) {
                 base_url = base_url
               )
             )
+            shinytoastr::toastr_success(
+              message = "Task deleted!",
+              progressBar = TRUE,
+              timeOut = 3000,
+              position = "bottom-center"
+            )
           },
           once = TRUE
         )
@@ -104,6 +110,12 @@ server <- \(input, output, session) {
             )
           )
           shinyjs::hide(id = save_edits_id, anim = TRUE, animType = "fade")
+          shinytoastr::toastr_success(
+            message = "Task updated!",
+            progressBar = TRUE,
+            timeOut = 3000,
+            position = "bottom-center"
+          )
         })
       })
     },
@@ -214,6 +226,12 @@ server <- \(input, output, session) {
             base_url = base_url
           )
         )
+        shinytoastr::toastr_success(
+          message = "Task deleted!",
+          progressBar = TRUE,
+          timeOut = 3000,
+          position = "bottom-center"
+        )
       },
       once = TRUE
     )
@@ -236,6 +254,12 @@ server <- \(input, output, session) {
         )
       )
       shinyjs::hide(id = save_edits_id, anim = TRUE, animType = "fade")
+      shinytoastr::toastr_success(
+        message = "Task updated!",
+        progressBar = TRUE,
+        timeOut = 3000,
+        position = "bottom-center"
+      )
     })
     shinyjs::reset(id = "new_task")
   })
