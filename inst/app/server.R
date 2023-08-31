@@ -1,5 +1,8 @@
-todo_name <- "todo1"
-base_url <- "http://127.0.0.1:8000/todo"
+todo_name <- Sys.getenv("TODO_NAME")
+base_url <- Sys.getenv("BASE_URL")
+# if you have the backend running locally you can use this for testing:
+# todo_name <- "todo1"
+# base_url <- "http://127.0.0.1:8000/todo"
 server <- \(input, output, session) {
   num_of_tasks <- reactiveVal(0)
   todo_list <- reactiveVal(
