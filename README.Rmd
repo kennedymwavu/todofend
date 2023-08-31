@@ -30,7 +30,25 @@ You can install the development version of todofend like so:
 remotes::install_github("kennedymwavu/todofend")
 ```
 
-## Usage
+## Environment variables
+
+In your working directory, make sure you have a `.Renviron` file with these variables:
+
+```r
+TODO_NAME=your-todo-list-name
+BASE_URL=base-url-to-the-api-backend
+TASK_LIMIT=your-desired-task-limit
+```
+
+For example:
+
+```r
+TODO_NAME=todo1
+BASE_URL=http://127.0.0.1:8000/todo
+TASK_LIMIT=500
+```
+
+## Run app
 
 ```r
 todofend::run_app()
